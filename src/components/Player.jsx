@@ -2,9 +2,12 @@ import React from 'react'
 import {assets} from '../assets/assets'
 import { useContext } from 'react'
 import { playerContext } from '../context/PlayerContext.jsx'
+import { useNavigate } from 'react-router-dom'
 
 
 const player = () => {
+
+    const gate=useNavigate()
 
     const {seekbar, seekbg,playerStatus,play,pause,track,time,previous,next,seekSong} = useContext(playerContext)
   return (
@@ -26,7 +29,7 @@ const player = () => {
                 
             
                 <img onClick={next} className='w-4 cursor-pointer' src={assets.next_icon} alt="" />
-                <img className='w-4 cursor-pointer' src={assets.loop_icon} alt="" />
+                <img onClick={()=>gate('/')} className='w-4 cursor-pointer' src={assets.loop_icon} alt="" />
             </div>
             <div className='flex items-center gap-5'>
                  <p>{time.currentTime.minute}:{time.currentTime.second}</p>
